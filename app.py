@@ -8,7 +8,7 @@ app = Flask(__name__)
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'gnanasree@123',
+    'password': '*****',
     'database': 'voterdb'
 }
 
@@ -97,3 +97,4 @@ def register():
 if __name__ == '__main__':
     print("Registered Routes:", app.url_map)
     app.run(debug=True)
+
