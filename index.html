@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IndiaVoteSphere</title>
+</head>
+<style>
+  /* Base styles */
+ body {
+     font-family: 'Segoe UI', sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f9f9f9;
+     overflow-x: hidden;
+   }
+   
+   header {
+     background-color: white;
+     border-bottom: 1px solid #ddd;
+     padding: 10px 30px;
+     animation: slideDown 1s ease-out;
+   }
+   
+   @keyframes slideDown {
+     from { transform: translateY(-100%); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+   }
+   
+   .navbar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+   
+   .logo {
+     font-weight: bold;
+     font-size: 22px;
+     color: #2c3e50;
+   }
+   
+   nav ul {
+     display: flex;
+     gap: 15px;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+   }
+   
+   nav a {
+     text-decoration: none;
+     color: #333;
+     position: relative;
+     transition: color 0.3s ease;
+   }
+   
+   nav a::after {
+     content: "";
+     display: block;
+     width: 0%;
+     height: 2px;
+     background: orange;
+     transition: width 0.3s;
+     position: absolute;
+     bottom: -5px;
+     left: 0;
+   }
+   
+   nav a:hover {
+     color: orange;
+   }
+   
+   nav a:hover::after {
+     width: 100%;
+   }
+   
+   .btn {
+     padding: 8px 12px;
+     border-radius: 6px;
+     border: none;
+     cursor: pointer;
+     transition: transform 0.3s ease, background-color 0.3s ease;
+   }
+   
+   .btn:hover {
+     transform: scale(1.05);
+   }
+   
+   .login { background: orange; color: white; }
+   .admin { background: green; color: white; }
+   .register { background: orange; color: white; margin-right: 10px; }
+   .view { background: white; color: green; border: 1px solid green; }
+   .learn { background-color: green; color: white; }
+   
+   /* Hero Section */
+   .hero {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 60px 10%;
+     background-color: #f1f7ff;
+     animation: fadeInUp 1s ease;
+   }
+   
+   @keyframes fadeInUp {
+     from { opacity: 0; transform: translateY(30px); }
+     to { opacity: 1; transform: translateY(0); }
+   }
+   
+   .hero-text h1 {
+     font-size: 36px;
+     color: #222;
+   }
+   
+   .highlight {
+     color: orange;
+   }
+   
+   .hero-text p {
+     margin: 10px 0;
+     animation: fadeIn 1.5s ease-in-out;
+   }
+   
+   .hero-text ul {
+     list-style: none;
+     padding: 0;
+   }
+   
+   .hero-text li {
+     margin: 5px 0;
+     animation: fadeIn 1.5s ease-in-out;
+   }
+   
+   .hero-img {
+     position: relative;
+     animation: fadeInRight 1s ease;
+   }
+   
+   @keyframes fadeInRight {
+     from { transform: translateX(50px); opacity: 0; }
+     to { transform: translateX(0); opacity: 1; }
+   }
+   
+   .hero-img img {
+     width: 400px;
+     border-radius: 12px;
+   }
+   
+   .election-card {
+     background: white;
+     padding: 50px;
+     position: absolute;
+     bottom: -20px;
+     margin-right: 10%;
+     margin-left: -10%;
+     width: 100%;
+     border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+     animation: fadeIn 1.8s ease-in-out;
+   }
+   
+   @keyframes fadeIn {
+     from { opacity: 0; }
+     to { opacity: 1; }
+   }
+   
+   /* Features Section */
+   .features {
+     text-align: center;
+     padding: 60px 10%;
+     background-color: #fff;
+     animation: fadeInUp 1s ease;
+   }
+   
+   .feature-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+     gap: 20px;
+     margin-top: 30px;
+   }
+   
+   .feature-card {
+     background-color: #f8f9fa;
+     padding: 20px;
+     border-radius: 12px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+     transition: transform 0.3s ease;
+     animation: fadeInUp 1s ease;
+   }
+   
+   .feature-card:hover {
+     transform: translateY(-5px);
+   }
+   
+   .feature-card h3 {
+     margin: 10px 0 5px;
+   }
+   
+   /* Calendar Section */
+   .calendar {
+     text-align: center;
+     padding: 50px 10%;
+     background-color: #f1f7ff;
+     animation: fadeInUp 1s ease;
+   }
+   
+   /* Footer */
+ 
+   /* Responsive */
+   @media (max-width: 768px) {
+     .hero {
+       flex-direction: column;
+       text-align: center;
+     }
+   
+     .hero-img img {
+       width: 90%;
+       margin-top: 20px;
+     }
+   }
+   /* Impact Section */
+ .impact {
+     padding: 60px 10%;
+     text-align: center;
+     background: #fff;
+     animation: fadeInUp 1s ease;
+   }
+   
+   .section-subtitle {
+     color: orange;
+     font-weight: bold;
+     margin-bottom: 10px;
+   }
+   
+   .section-title {
+     font-size: 28px;
+     margin-bottom: 10px;
+   }
+   
+   .section-description {
+     color: #555;
+     margin-bottom: 40px;
+   }
+   
+   .impact-cards {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 25px;
+   }
+   
+   .impact-card {
+     background: #f8f9fa;
+     padding: 25px;
+     width: 220px;
+     border-radius: 10px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+     transition: transform 0.3s ease;
+     animation: fadeIn 1.2s ease-in;
+   }
+   
+   .impact-card:hover {
+     transform: translateY(-8px);
+   }
+   
+   .impact-card .icon {
+     font-size: 24px;
+     margin-bottom: 10px;
+   }
+   
+   .impact-card h3 {
+     font-size: 24px;
+     color: #222;
+   }
+   
+   .highlight-text {
+     color: orange;
+     font-weight: bold;
+   }
+   
+   /* Call to Action */
+   .cta {
+     padding: 60px 10%;
+     background: #fff9f3;
+     text-align: center;
+     animation: fadeInUp 1s ease;
+   }
+   
+   .cta h2 {
+     font-size: 26px;
+     margin-bottom: 10px;
+   }
+   
+   .cta p {
+     margin-bottom: 20px;
+   }
+   
+   /* Footer */
+   footer {
+     background-color: #111827;
+     color: white;
+     padding: 50px 10% 20px;
+     animation: fadeIn 1.5s ease;
+   }
+   
+   .footer-container {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+   }
+   
+   .footer-col {
+     width: 220px;
+     margin-bottom: 20px;
+   }
+   
+   .footer-col h4 {
+     margin-bottom: 15px;
+     color: #f5a623;
+   }
+   
+   .footer-col ul {
+     list-style: none;
+     padding: 0;
+   }
+   
+   .footer-col ul li {
+     margin: 8px 0;
+     color: #ccc;
+     font-size: 14px;
+   }
+   
+   .footer-logo {
+     font-size: 18px;
+     font-weight: bold;
+     margin-bottom: 10px;
+   }
+   
+   .social-icons a {
+     margin-right: 10px;
+     font-size: 20px;
+     color: white;
+   }
+   
+   .footer-bottom {
+     text-align: center;
+     border-top: 1px solid #333;
+     margin-top: 30px;
+     padding-top: 15px;
+     font-size: 13px;
+     color: #aaa;
+   }
+   
+   /* Responsive Footer */
+   @media (max-width: 768px) {
+     .footer-container {
+       flex-direction: column;
+       gap: 30px;
+     }
+   }
+</style>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">VoteSphere</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Elections</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li> <!-- ✅ fixed the missing closing tag -->
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><button class="btn login">Login</button></li>
+          <li><button class="btn admin">Admin</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Empowering <span class="highlight">Indian</span> Democracy Through Digital <br>Voting</h1>
+      <p>A secure, transparent and accessible platform for the world’s largest democracy.</p>
+      <ul>
+        <li>✅ Secure and transparent voting system</li>
+        <li>📊 Real-time election results and analytics</li>
+        <li>📝 Easy voter registration and verification</li>
+      </ul>
+      <div class="buttons">
+        <button class="btn register">Register to Vote</button>
+        <button class="btn view">View Elections</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Democracy at Your Fingertips</h2>
+    <p>Our platform offers a range of features to make the electoral process secure, transparent, and accessible.</p>
+    <div class="feature-grid">
+      <div class="feature-card">🔒 <h3>Secure Voting Process</h3><p>End-to-end encryption ensures your vote remains confidential.</p></div>
+      <div class="feature-card">📝 <h3>Easy Registration</h3><p>Quick registration with Aadhaar integration.</p></div>
+      <div class="feature-card">🌐 <h3>Inclusive Platform</h3><p>Multilingual support for all citizens.</p></div>
+      <div class="feature-card">📊 <h3>Real-time Analytics</h3><p>Instant updates and analytics on election results.</p></div>
+      <div class="feature-card">✅ <h3>Verification System</h3><p>Multi-step process for authentic voter participation.</p></div>
+      <div class="feature-card">🔔 <h3>Notifications</h3><p>Timely alerts about elections and deadlines.</p></div>
+    </div>
+  </section>
+
+  <section class="calendar">
+    <h3>🗓️ Upcoming</h3>
+    <h2>Elections Calendar</h2>
+    <button class="btn view">View All Elections</button>
+  </section>
+
+  <section class="impact">
+    <h4 class="section-subtitle">OUR IMPACT</h4>
+    <h2 class="section-title">Democracy by the Numbers</h2>
+    <p class="section-description">
+      India's electoral system is one of the largest and most vibrant democratic exercises in the world.
+    </p>
+    <div class="impact-cards">
+      <div class="impact-card">
+        <div class="icon">👥</div>
+        <h3>912M+</h3>
+        <p class="highlight-text">Registered Voters</p>
+        <p>Largest democratic electorate globally</p>
+      </div>
+      <div class="impact-card">
+        <div class="icon">🗳️</div>
+        <h3>17</h3>
+        <p class="highlight-text">Completed Elections</p>
+        <p>Nationwide general elections since independence</p>
+      </div>
+      <div class="impact-card">
+        <div class="icon">📍</div>
+        <h3>1.03M</h3>
+        <p class="highlight-text">Polling Stations</p>
+        <p>Across 28 states and 8 union territories</p>
+      </div>
+      <div class="impact-card">
+        <div class="icon">📊</div>
+        <h3>67.4%</h3>
+        <p class="highlight-text">Voter Turnout</p>
+        <p>Average participation in last general election</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to Participate in Indian Democracy?</h2>
+    <p>Register as a voter today and make your voice heard in upcoming elections.</p>
+    <button class="btn register">Register Now</button>
+    <button class="btn view">Learn More</button>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3 class="footer-logo">VoteSphere</h3>
+        <p>Empowering Indian democracy through transparent and accessible voting systems.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li>Home</li>
+          <li>Elections</li>
+          <li>Register to Vote</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li>FAQs</li>
+          <li>Vote Procedure</li>
+          <li>Election Results</li>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>📍 Sansad Marg, New Delhi, India</p>
+        <p>📞 +91 1234 567890</p>
+        <p>✉️ info@indiavotesphere.gov</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VoteSphere. All rights reserved. Developed for Indian Electoral System.</p>
+    </div>
+  </footer>
+
+  <!-- Correct placement of script and image tags -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <img src="{{ url_for('static', filename='vote-illustration.jpg') }}" alt="Illustration">
